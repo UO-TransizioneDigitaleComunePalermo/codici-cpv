@@ -105,7 +105,7 @@
 	        
 		<div class="row clearfix">
 		
-			<div class="col-md-10 column">
+			<div class="col-md-12 column">
 				<button type="button" class="btn btn-primary btn-sm"><b>Cerca informazioni o parole chiave</b></button>  
 				
 			<div ex:role="facet" ex:facetClass="TextSearch"></div>
@@ -116,7 +116,7 @@
 			</div>
 		</div>
 		<div class="row clearfix">
-			<div class="col-md-10 column">
+			<div class="col-md-12 column">
 				<div ex:role="facet" 
 				ex:facetClass="Cloud"
 				ex:expression=".argomento" 
@@ -124,7 +124,7 @@
 				ex:sortMode="count"></div>
 			
 			</div>  
-			<div class="col-md-2 column">
+			<div class="col-md-3 column">
 				<div ex:role="facet" 
 				ex:expression=".tipo_documento" 
 				ex:facetLabel="Tipo documento"
@@ -166,7 +166,7 @@
 				</div>
 -->
 				</div>
-			<div class="col-md-2 column">
+			<div class="col-md-3 column">
 				<div ex:role="facet" 
 				ex:expression=".data" 
 				ex:facetLabel="Data"
@@ -185,10 +185,10 @@
 					<div ex:role="exhibit-view" 
 					ex:viewClass="Exhibit.TabularView"  
 					ex:label="Table"  
-					ex:columns=".titolo_oggetto,.tipo_documento,.link,.argomento,.dettagli_nota,.data"  
-					ex:columnLabels="Titolo o oggetto, Tipo documento, Link, Argomento, Dettagli nota, Data" 
-					ex:columnFormats="list,list,list,list,list,list"
-					ex:sortColumn="6"
+					ex:columns=".titolo_oggetto,.tipo_documento,.argomento,.dettagli_nota,.data"  
+					ex:columnLabels="Titolo o oggetto, Tipo documento, Argomento, Dettagli nota, Data" 
+					ex:columnFormats="list,list,list,list,list"
+					ex:sortColumn="5"
 					ex:sortAscending="true"
 					ex:tableStyler="tableStyler"> 
 					<div ex:role="exhibit-lens">
