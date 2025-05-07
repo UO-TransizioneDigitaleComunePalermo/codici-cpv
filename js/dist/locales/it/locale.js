@@ -66,8 +66,8 @@ Exhibit.Localization.importLocale("it", {
     "%import.failedAccessHttpStatus": " (HTTP %1$d)",
     "%import.missingFragment": "Failed to locate fragment in %1$s",
 
-    "%database.itemType.label": "azione",
-    "%database.itemType.pluralLabel": "azioni",
+    "%database.itemType.label": "documento",
+    "%database.itemType.pluralLabel": "documenti",
     "%database.labelProperty.label": "label",
     "%database.labelProperty.pluralLabel": "labels",
     "%database.labelProperty.reverseLabel": "label of",
