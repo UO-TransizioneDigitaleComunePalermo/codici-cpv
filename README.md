@@ -1,5 +1,5 @@
 # `Catalogo` di documentazione sul RUP, DEC e Codice dei Contratti
-[https://uo-transizionedigitalecomunepalermo.github.io/documentazione-rup/](https://uo-transizionedigitalecomunepalermo.github.io/documentazione-rup)
+Catalogo al link [https://uo-transizionedigitalecomunepalermo.github.io/documentazione-rup/](https://uo-transizionedigitalecomunepalermo.github.io/documentazione-rup)
 
 ### Riferimenti per le fonti
 <code>Articoli, giurisprudenza / norme, note degli uffici</code>
