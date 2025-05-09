@@ -1,8 +1,8 @@
-# `Catalogo` di documentazione sul RUP
+# `Catalogo` di documentazione sul RUP, DEC e Codice dei Contratti
 [https://uo-transizionedigitalecomunepalermo.github.io/documentazione-rup/](https://uo-transizionedigitalecomunepalermo.github.io/documentazione-rup)
 
 ### Riferimenti per le fonti
-Articoli, giurisprudenza, note degli uffici
+<code>Articoli, giurisprudenza / norme, note degli uffici</code>
 
 ### Gli strumenti principali usati per realizzare la visualizzazione del `catalogo` sono quattro:
 - [**Simile Exhibit**](http://www.simile-widgets.org/exhibit3/), per realizzare l'interfaccia di navigazione del catalogo;
