@@ -2,7 +2,7 @@
 Catalogo al link [https://uo-transizionedigitalecomunepalermo.github.io/documentazione-rup/](https://uo-transizionedigitalecomunepalermo.github.io/documentazione-rup)
 
 ### Riferimenti per la norma
-**Codice dei Contratti** [Decreto Legislativo 36/2023](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2023;036#)
+Codice dei Contratti [Decreto Legislativo 36/2023](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2023;036#)
 
 ### Riferimenti per le fonti
 - Articoli e Pubblicazioni,
