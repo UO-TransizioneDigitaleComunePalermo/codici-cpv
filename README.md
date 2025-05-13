@@ -1,8 +1,13 @@
 # `Catalogo` di documentazione sul RUP, DEC e Codice dei Contratti
 Catalogo al link [https://uo-transizionedigitalecomunepalermo.github.io/documentazione-rup/](https://uo-transizionedigitalecomunepalermo.github.io/documentazione-rup)
 
+### Riferimenti per la norma
+**Codice dei Contratti** [Decreto Legislativo 36/2023](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2023;036#)
+
 ### Riferimenti per le fonti
-<code>Articoli, giurisprudenza e norme, note degli uffici</code>
+- Articoli e Pubblicazioni,
+- Giurisprudenza e norme,
+- Note degli uffici.
 
 ### Gli strumenti principali usati per realizzare la visualizzazione del `catalogo` sono quattro:
 - [**Simile Exhibit**](http://www.simile-widgets.org/exhibit3/), per realizzare l'interfaccia di navigazione del catalogo;
