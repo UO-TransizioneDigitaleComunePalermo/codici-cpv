@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <!-- Testa rimasta invariata -->
+    <meta charset="UTF-8">
+    <meta name="author" content="@gbvitrano">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comune di Palermo - Codici assegnazione uffici (Protocollo MAIA)">
+    <link rel="icon" href="https://raw.githubusercontent.com/SiciliaHub/palermohub/gh-pages/legend/umap/comune_pa.png ">
+    <title>Comune di Palermo - Codici assegnazione uffici (Protocollo MAIA)</title>
+   <style>
+        @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700&display=swap');
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            margin: 20px auto;
+            max-width: 65rem;
+            padding: 0 1rem;
+            line-height: 1.6;
+        }
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        th {
+            background-color: #ff9900;
+            padding: 8px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #fff;
+        }
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            font-size: 0.9rem;
+        }
+        input[type="text"], select, button {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;  border: 1px solid;  border-radius: 10px;
+        }
+        button {
+            width: auto;
+            padding: 8px 16px;
+            margin-top: 10px;
+        }
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .area-filter {
+            cursor: pointer;
+            color: #000;
+            text-decoration: underline;
+            transition: all 0.3s;
+        }
+        .area-filter:hover {
+            background-color: #fff9be;
+        }
+        .area-filter.active {
+            background-color: #fff9be;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 1.5rem; }
+            p { font-size: 0.9rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 6px; font-size: 0.8rem; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 1.2rem; }
+            p { font-size: 0.8rem; }
+            table { font-size: 0.7rem; }
+            th, td { padding: 4px; font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Corpo invariato -->
+    <div class="logo-container">
+        <img src="https://raw.githubusercontent.com/SiciliaHub/palermohub/gh-pages/legend/umap/comune_pa.png" alt="Logo Comune di Palermo">
+    </div>
+    <h1>Codici assegnazione uffici (Protocollo MAIA)</h1>
+    <p>
+        <br>Elenco rielaborato su dati della Vice Segreteria Generale - gs. Delibera di G.C. n.203 del 08/08/2024
+        <br>U.O. Protocollo - Coll. Prof. Amm. Matteo Bertolino
+        <br>Ultimo aggiornamento 22/05/2025
+    </p>
+
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="Scrivi per iniziare a cercare..." onkeyup="filterTable()">
+        <button onclick="clearFilters()">Pulisci</button>
+    </div>
+
+    <table id="ufficiTable">
+        <thead>
+            <tr>
+                <th>Area</th>
+                <th>Ufficio</th>
+                <th>Codice</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        let data = [];
+        let currentFilterArea = null;
+
+        function csvToJson(csv) {
+            const lines = csv.split('\n').filter(line => line.trim() !== '');
+            const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+            
+            return lines.slice(1).map(line => {
+                const values = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                const obj = {};
+                
+                headers.forEach((header, index) => {
+                    let value = values[index] ? 
+                        values[index].trim().replace(/^"|"$/g, '') : 
+                        '';
+                        
+                    // Mappatura robusta delle colonne
+                    switch(header) {
+                        case 'area':
+                            obj.area = value;
+                            break;
+                        case 'nomeufficio':
+                        case 'nome ufficio':
+                            obj.nomeUfficio = value;
+                            break;
+                        case 'codice':
+                            obj.codice = value;
+                            break;
+                    }
+                });
+                
+                return obj;
+            }).filter(item => item.area && item.nomeUfficio && item.codice);
+        }
+
+        async function loadData() {
+            try {
+                const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRIbz6ziYfWDQPW-SPwZqNcsOzpMx7m6VWohZOsEj9uCYMrMerZ-CjFQdZ-y6bU8M6RshFrsLDjd_l6/pub?gid=0&single=true&output=csv');
+                const csv = await response.text();
+                data = csvToJson(csv);
+                console.log('Dati caricati:', data);
+                loadTable(data);
+                initEventListeners();
+            } catch (error) {
+                console.error('Errore:', error);
+                alert('Errore nel caricamento dati. Verificare: 1) Connessione internet 2) Formato del foglio 3) Autorizzazioni');
+            }
+        }
+
+        function loadTable(tableData) {
+            const tableBody = document.querySelector('#ufficiTable tbody');
+            tableBody.innerHTML = '';
+            
+            tableData.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="area-filter" data-area="${row.area}">${row.area}</td>
+                    <td>${row.nomeUfficio}</td>
+                    <td>${row.codice}</td>
+                `;
+                tableBody.appendChild(tr);
+            });
+
+            updateActiveFilters();
+        }
+
+        function filterTable() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filteredData = data.filter(item => {
+                const matchesSearch = item.nomeUfficio.toLowerCase().includes(searchTerm);
+                const matchesArea = !currentFilterArea || item.area === currentFilterArea;
+                return matchesSearch && matchesArea;
+            });
+            loadTable(filteredData);
+        }
+
+        function clearFilters() {
+            document.getElementById('searchInput').value = '';
+            currentFilterArea = null;
+            loadTable(data);
+        }
+
+        function updateActiveFilters() {
+            document.querySelectorAll('.area-filter').forEach(td => {
+                td.classList.toggle('active', td.dataset.area === currentFilterArea);
+            });
+        }
+
+        function handleAreaClick(event) {
+            const target = event.target;
+            if(target.classList.contains('area-filter')) {
+                const clickedArea = target.dataset.area;
+                currentFilterArea = currentFilterArea === clickedArea ? null : clickedArea;
+                filterTable();
+            }
+        }
+
+        function initEventListeners() {
+            document.querySelector('#ufficiTable tbody').addEventListener('click', handleAreaClick);
+        }
+
+        window.onload = loadData;
+    </script>
+</body>
+</html>
