@@ -218,6 +218,47 @@
             font-size: 1.2rem;
         }
     }
+		        .back-to-top {
+            position: fixed;
+            bottom: -60px;
+            right: 20px;
+            background-color: #003366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: none;
+            font-family: inherit;
+            font-size: 0.9rem;
+            z-index: 1000;
+            opacity: 0;
+        }
+
+        .back-to-top.visible {
+            bottom: 20px;
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            background-color: #ad011b;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top {
+                right: 10px;
+                bottom: -60px;
+                padding: 10px 16px;
+                font-size: 0.85rem;
+            }
+            
+            .back-to-top.visible {
+                bottom: 15px;
+            }
+        }
+	
     </style>
 <body>
     <div class="container">
@@ -239,7 +280,19 @@
         <div id="resultsContainer"></div>
     </div>
 
+<button class="back-to-top" title="Torna su">↑ Torna Su</button> 
+ 
     <script>
+        let originalData = {};
+
+        const debounce = (func, wait = 300) => {
+            let timeout;
+            return (...args) => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        };
+
         const renderData = (data) => {
             const container = document.getElementById('resultsContainer');
             container.innerHTML = '';
@@ -272,17 +325,9 @@
             }
         };
 
-        const debounce = (func, wait = 300) => {
-            let timeout;
-            return (...args) => {
-                clearTimeout(timeout);
-                timeout = setTimeout(() => func.apply(this, args), wait);
-            };
-        };
-
         const filterData = (searchTerm = '') => {
             const term = searchTerm.toLowerCase().trim();
-            return Object.entries(window.originalData).reduce((acc, [area, offices]) => {
+            return Object.entries(originalData).reduce((acc, [area, offices]) => {
                 const filtered = offices.filter(office => 
                     office.ufficio.toLowerCase().includes(term) ||
                     office.codice.toLowerCase().includes(term)
@@ -292,13 +337,33 @@
             }, {});
         };
 
+        // Back to Top functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        const toggleBackToTop = () => {
+            const scrollThreshold = document.documentElement.scrollHeight * 0.3;
+            if (window.scrollY > scrollThreshold) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        };
+
+        const scrollToTop = () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        };
+
+        // Initialize
         const init = async () => {
             try {
                 const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRIbz6ziYfWDQPW-SPwZqNcsOzpMx7m6VWohZOsEj9uCYMrMerZ-CjFQdZ-y6bU8M6RshFrsLDjd_l6/pub?gid=0&single=true&output=csv');
                 const csv = await response.text();
                 const rows = csv.split('\n').slice(1);
                 
-                window.originalData = rows.reduce((acc, row) => {
+                originalData = rows.reduce((acc, row) => {
                     const [area, ufficio, codice] = row.split(',').map(c => c.trim().replace(/^"|"$/g, ''));
                     if(area && ufficio && codice) {
                         if(!acc[area]) acc[area] = [];
@@ -307,11 +372,15 @@
                     return acc;
                 }, {});
 
-                renderData(window.originalData);
+                renderData(originalData);
                 
                 document.getElementById('searchInput').addEventListener('input', 
                     debounce(e => renderData(filterData(e.target.value)))
                 );
+
+                window.addEventListener('scroll', toggleBackToTop);
+                backToTopButton.addEventListener('click', scrollToTop);
+                toggleBackToTop();
 
             } catch(error) {
                 document.getElementById('resultsContainer').innerHTML = `
@@ -320,6 +389,7 @@
                         <p>Si prega di riprovare più tardi</p>
                     </div>
                 `;
+                console.error('Errore:', error);
             }
         };
 
