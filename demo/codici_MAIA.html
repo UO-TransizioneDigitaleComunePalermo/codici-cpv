@@ -7,7 +7,7 @@
     <meta name="description" content="Città di Palermo - Codici assegnazione uffici (Protocollo MAIA)">
     <link rel="icon" href="https://raw.githubusercontent.com/SiciliaHub/palermohub/gh-pages/legend/umap/comune_pa.png">
     <title>Città di Palermo - Codici Protocollo MAIA</title>
-    <style>
+<style>
         @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap');
         
         :root {
@@ -405,16 +405,6 @@
             transform: translateX(0);
         }
     </style>
-	
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-87653723-4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-87653723-4');
-</script>	
-	
 </head>
 <body>
     <div class="header">
@@ -424,14 +414,14 @@
                      alt="Comune di Palermo" 
                      class="logo">
             </a>
-            <h1>Codici uffici protocollo MAIA</h1>
+            <h1>Codici assegnazione uffici (Protocollo MAIA)</h1>
             <div class="header-subtitle">
-                 Elenco rielaborato su dati della Vice Segreteria Generale - gs. Delibera di G.C. n.203 del 08/08/2024 U.O. Protocollo - Coll. Prof. Amm. Matteo Bertolino<br>
-                <small>Ultimo aggiornamento: 22/05/2025</small>
+                Elenco rielaborato su dati della Vice Segreteria Generale - U.O. Protocollo <br> Coll. Prof. Amm. Matteo Bertolino |  Delibera di G.C. n.203 del 08/08/2024 <br>
+				<small>Ultimo aggiornamento: 22/05/2025</small>
             </div>
         </div>
     </div>
-	
+
     <div class="container">
         <div class="search-section">
             <label for="searchInput" class="search-label">
@@ -440,7 +430,7 @@
             <input type="search" 
                    id="searchInput" 
                    class="search-input"
-                   placeholder="Inserisci il nome dell'ufficio o il codice da cercare..." 
+                   placeholder="Scrivi qui il nome dell'ufficio o il codice..." 
                    autofocus>
             <div class="stats" id="statsContainer">
                 <div class="stat" id="totalAreas">Caricamento...</div>
@@ -579,8 +569,7 @@
                 Object.entries(this.originalData).forEach(([area, offices]) => {
                     const filteredOffices = offices.filter(office => 
                         office.ufficio.toLowerCase().includes(term) ||
-                        office.codice.toLowerCase().includes(term) ||
-                        area.toLowerCase().includes(term)
+                        office.codice.toLowerCase().includes(term)
                     );
                     
                     if (filteredOffices.length > 0) {
