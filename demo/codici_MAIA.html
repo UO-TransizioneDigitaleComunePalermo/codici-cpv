@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Città di Palermo - Codici assegnazione uffici (Protocollo MAIA)">
     <link rel="icon" href="https://raw.githubusercontent.com/SiciliaHub/palermohub/gh-pages/legend/umap/comune_pa.png">
-    <title>Città di Palermo - Codici assegnazione uffici (Protocollo MAIA)</title>
+    <title>Città di Palermo - Codici Protocollo MAIA</title>
     <style>
-	
-	@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700&display=swap');
-	
+        @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap');
+        
         :root {
             --primary: #ad011b;
             --secondary: #ff9900;
-            --background: #fff;
+            --success: #28a745;
+            --light-bg: #f8f9fa;
+            --border: #e9ecef;
+            --text-light: #6c757d;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-hover: 0 4px 20px rgba(0,0,0,0.15);
         }
 
         * {
@@ -24,214 +28,281 @@
         }
 
         body {
-             font-family: 'Titillium Web', sans-serif;
+            font-family: 'Titillium Web', sans-serif;
             line-height: 1.6;
-            background: var(--background);
+            background: var(--light-bg);
             color: #333;
-            padding: 1rem;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
+            padding: 0 1rem;
         }
 
-        header {
+        /* Header */
+        .header {
+            background: white;
+            padding: 2rem 0;
             text-align: center;
-            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
         }
 
         .logo {
             height: 80px;
             margin-bottom: 1rem;
+            transition: transform 0.3s ease;
         }
 
-        h1 {
+        .logo:hover {
+            transform: scale(1);
+        }
+
+        .header h1 {
             color: var(--primary);
-            font-size: 1.8rem;
+            font-size: 2rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
-        .search-box {
+        .header-subtitle {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
             position: sticky;
             top: 0;
-            background: white;
-            padding: 1rem 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-    input[type="search"] {
-        width: 100%;
-        max-width: 98%; /* Larghezza massima su desktop */
-        margin: 0 auto;
-        display: block;
-                padding: 12px;
-        border: 2px solid #003366;
-        border-radius: 25px;
-        font-size: 16px;
-    }
-
-    @media (max-width: 768px) {
-        input[type="search"] {
-            width: 98% !important;
-            max-width: none;
-            padding: 1rem;
-            font-size: 1rem;
-            border-width: 2px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        input[type="search"] {
-            width: 94% !important;
-            padding: 0.9rem;
-        }
-    }
-
-        input[type="search"]:focus {
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
-        }
-
-        .area-group {
-            margin: 2rem 0;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
-        }
-
-        .area-title {
-            padding: 1.2rem;
-            background: var(--primary);
-            color: white;
-            border-radius: 12px 12px 0 0;
+        .search-label {
+            display: block;
             font-weight: 600;
-        }
-
-        .office-list {
-            padding: 1rem;
-        }
-
-        .office-item {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            background: #fff;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .office-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .code {
-            color: var(--secondary);
-            font-weight: 600;
-            font-family: 'Courier New', monospace;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 2rem;
-            color: #666;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 0.5rem;
-            }
-
-            .office-item {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 0.5rem;
-                padding: 1.2rem;
-            }
-
-            .code {
-                font-size: 1.2em;
-                margin-top: 0.5rem;
-            }
-
-            input[type="search"] {
-                font-size: 1rem;
-                padding: 0.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            .area-title {
-                font-size: 1.1rem;
-                padding: 1rem;
-            }
-        }
-		
-		    @media (max-width: 768px) {
-        .office-item {
-            padding: 1.5rem;
-            margin: 0.75rem 0;
-            background: #fff;
-            border: 1px solid #eee;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .office-item > div:first-child {
-            font-size: 1.1rem;
             color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-light);
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .stat {
+            background: var(--light-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
             font-weight: 500;
         }
 
-        .code {
+        /* Area Groups */
+        .area-group {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .area-group:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .area-header {
+            background: linear-gradient(135deg, var(--primary), #c41230);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .area-title {
             font-size: 1.3rem;
-            color: #e67e00;
-            margin-top: 0.75rem;
-            padding: 0.3rem 0;
-            border-top: 1px solid #eee;
+            font-weight: 600;
         }
 
+        .area-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .area-group.collapsed .area-toggle {
+            transform: rotate(-90deg);
+        }
+
+        .area-count {
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin-left: 1rem;
+        }
+
+        /* Office List */
         .office-list {
-            padding: 0.5rem;
-            gap: 0.75rem;
+            padding: 0;
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
         }
-    }
 
-    @media (max-width: 480px) {
+        .area-group.collapsed .office-list {
+            max-height: 0;
+            padding: 0;
+        }
+
         .office-item {
-            padding: 1.2rem;
-            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.2s ease;
+            position: relative;
         }
 
-        .office-item > div:first-child {
-            font-size: 1rem;
+        .office-item:last-child {
+            border-bottom: none;
         }
 
-        .code {
-            font-size: 1.2rem;
+        .office-item:hover {
+            background: var(--light-bg);
+            padding-left: 2rem;
         }
-    }
-		        .back-to-top {
+
+        .office-name {
+            flex: 1;
+            font-weight: 500;
+            color: #333;
+            margin-right: 1rem;
+            line-height: 1.4;
+        }
+
+        .office-code {
+            background: linear-gradient(135deg, var(--secondary), #ffb347);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+          */  font-family: 'Courier New', monospace;*/
+            font-weight: 700;
+            font-size: 0.95rem;
+            min-width: 80px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(255, 153, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .office-code:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 153, 0, 0.4);
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .no-results-icon {
+            font-size: 3rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .no-results h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .no-results p {
+            color: var(--text-light);
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Back to Top */
+        .back-to-top {
             position: fixed;
             bottom: -60px;
             right: 20px;
-            background-color: #003366;
+            background: var(--primary);
             color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             border: none;
-            font-family: inherit;
-            font-size: 0.9rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-hover);
             z-index: 1000;
             opacity: 0;
         }
@@ -242,158 +313,401 @@
         }
 
         .back-to-top:hover {
-            background-color: #ad011b;
-            transform: translateY(-2px);
+            background: var(--secondary);
+           */ transform: translateY(-3px) scale(1.1);*/
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .back-to-top {
-                right: 10px;
-                bottom: -60px;
-                padding: 10px 16px;
-                font-size: 0.85rem;
+            .container {
+                padding: 0 0.75rem;
             }
-            
-            .back-to-top.visible {
-                bottom: 15px;
+
+            .header {
+                padding: 1.5rem 0;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .office-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+                padding: 1.5rem 1rem;
+            }
+
+            .office-code {
+                align-self: flex-end;
+                min-width: auto;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .area-header {
+                padding: 1.25rem;
+            }
+
+            .area-title {
+                font-size: 1.1rem;
             }
         }
-	
-    </style>
-<body>
-    <div class="container">
-        <header>
-          </head> <a href="https://www.comune.palermo.it/" title="Comune di Palermo" target="_blank">  <img src="https://raw.githubusercontent.com/SiciliaHub/palermohub/gh-pages/legend/umap/comune_pa.png" 
-                 alt="Comune di Palermo" 
-                 class="logo"></a>
-    <h1>Codici assegnazione uffici (Protocollo MAIA)</h1>
-    <p><br> Elenco rielaborato su dati della Vice Segreteria Generale - gs. Delibera di G.C. n.203 del 08/08/2024 <br> U.O. Protocollo - Coll. Prof. Amm. Matteo Bertolino <br> Ultimo aggiornamento 22/05/2025</p>
-        </header>
 
-        <div class="search-box">
+        @media (max-width: 480px) {
+            .search-section {
+                padding: 1rem;
+            }
+
+            .search-input {
+                padding: 0.875rem 1rem;
+            }
+
+            .office-item {
+                padding: 1.25rem 0.75rem;
+            }
+
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                right: 15px;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Copy feedback */
+        .copy-feedback {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transform: translateX(300px);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .copy-feedback.show {
+            transform: translateX(0);
+        }
+    </style>
+	
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-87653723-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-87653723-4');
+</script>	
+	
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="https://www.comune.palermo.it/" title="Comune di Palermo" target="_blank">
+                <img src="https://raw.githubusercontent.com/SiciliaHub/palermohub/gh-pages/legend/umap/comune_pa.png" 
+                     alt="Comune di Palermo" 
+                     class="logo">
+            </a>
+            <h1>Codici uffici protocollo MAIA</h1>
+            <div class="header-subtitle">
+                 Elenco rielaborato su dati della Vice Segreteria Generale - gs. Delibera di G.C. n.203 del 08/08/2024 U.O. Protocollo - Coll. Prof. Amm. Matteo Bertolino<br>
+                <small>Ultimo aggiornamento: 22/05/2025</small>
+            </div>
+        </div>
+    </div>
+	
+    <div class="container">
+        <div class="search-section">
+            <label for="searchInput" class="search-label">
+                🔍 Cerca un ufficio o codice
+            </label>
             <input type="search" 
                    id="searchInput" 
-                   placeholder="Cerca per nome ufficio o codice..." 
+                   class="search-input"
+                   placeholder="Inserisci il nome dell'ufficio o il codice da cercare..." 
                    autofocus>
+            <div class="stats" id="statsContainer">
+                <div class="stat" id="totalAreas">Caricamento...</div>
+                <div class="stat" id="totalOffices">Caricamento...</div>
+            </div>
         </div>
 
-        <div id="resultsContainer"></div>
+        <div id="resultsContainer">
+            <div class="loading">
+                <div class="spinner"></div>
+                <h3>Caricamento dati in corso...</h3>
+                <p>Attendere prego</p>
+            </div>
+        </div>
     </div>
 
-<button class="back-to-top" title="Torna su">↑ Torna Su</button> 
- 
+    <button class="back-to-top" id="backToTop" title="Torna all'inizio" aria-label="Torna all'inizio">
+        ↑
+    </button>
+
+    <div class="copy-feedback" id="copyFeedback">
+        Codice copiato! 📋
+    </div>
+
     <script>
-        let originalData = {};
-
-        const debounce = (func, wait = 300) => {
-            let timeout;
-            return (...args) => {
-                clearTimeout(timeout);
-                timeout = setTimeout(() => func.apply(this, args), wait);
-            };
-        };
-
-        const renderData = (data) => {
-            const container = document.getElementById('resultsContainer');
-            container.innerHTML = '';
-
-            if(Object.keys(data).length === 0) {
-                container.innerHTML = `
-                    <div class="no-results">
-                        <h3>Nessun risultato trovato</h3>
-                        <p>Prova a modificare i termini di ricerca</p>
-                    </div>
-                `;
-                return;
+        class CodiceMaiaApp {
+            constructor() {
+                this.originalData = {};
+                this.filteredData = {};
+                this.searchInput = document.getElementById('searchInput');
+                this.resultsContainer = document.getElementById('resultsContainer');
+                this.backToTopBtn = document.getElementById('backToTop');
+                this.copyFeedback = document.getElementById('copyFeedback');
+                this.totalAreas = document.getElementById('totalAreas');
+                this.totalOffices = document.getElementById('totalOffices');
+                
+                this.init();
             }
 
-            for(const [area, offices] of Object.entries(data)) {
-                const areaHtml = `
-                    <div class="area-group">
-                        <div class="area-title">${area}</div>
-                        <div class="office-list">
-                            ${offices.map(office => `
-                                <div class="office-item">
-                                    <div>${office.ufficio}</div>
-                                    <div class="code">${office.codice}</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-                container.insertAdjacentHTML('beforeend', areaHtml);
+            async init() {
+                try {
+                    await this.loadData();
+                    this.setupEventListeners();
+                    this.updateStats();
+                    this.render();
+                } catch (error) {
+                    this.showError('Errore nel caricamento dei dati. Riprovare più tardi.');
+                    console.error('Errore:', error);
+                }
             }
-        };
 
-        const filterData = (searchTerm = '') => {
-            const term = searchTerm.toLowerCase().trim();
-            return Object.entries(originalData).reduce((acc, [area, offices]) => {
-                const filtered = offices.filter(office => 
-                    office.ufficio.toLowerCase().includes(term) ||
-                    office.codice.toLowerCase().includes(term)
-                );
-                if(filtered.length) acc[area] = filtered;
-                return acc;
-            }, {});
-        };
-
-        // Back to Top functionality
-        const backToTopButton = document.querySelector('.back-to-top');
-        
-        const toggleBackToTop = () => {
-            const scrollThreshold = document.documentElement.scrollHeight * 0.3;
-            if (window.scrollY > scrollThreshold) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        };
-
-        const scrollToTop = () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        };
-
-        // Initialize
-        const init = async () => {
-            try {
+            async loadData() {
                 const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRIbz6ziYfWDQPW-SPwZqNcsOzpMx7m6VWohZOsEj9uCYMrMerZ-CjFQdZ-y6bU8M6RshFrsLDjd_l6/pub?gid=0&single=true&output=csv');
                 const csv = await response.text();
-                const rows = csv.split('\n').slice(1);
+                const rows = csv.split('\n').slice(1).filter(row => row.trim());
                 
-                originalData = rows.reduce((acc, row) => {
-                    const [area, ufficio, codice] = row.split(',').map(c => c.trim().replace(/^"|"$/g, ''));
-                    if(area && ufficio && codice) {
-                        if(!acc[area]) acc[area] = [];
-                        acc[area].push({ ufficio, codice });
+                this.originalData = {};
+                
+                rows.forEach(row => {
+                    const columns = this.parseCSVRow(row);
+                    const [area, ufficio, codice] = columns.map(c => c.trim());
+                    
+                    if (area && ufficio && codice) {
+                        if (!this.originalData[area]) {
+                            this.originalData[area] = [];
+                        }
+                        this.originalData[area].push({ ufficio, codice });
                     }
-                    return acc;
-                }, {});
+                });
 
-                renderData(originalData);
+                // Ordina gli uffici all'interno di ogni area
+                Object.keys(this.originalData).forEach(area => {
+                    this.originalData[area].sort((a, b) => a.ufficio.localeCompare(b.ufficio));
+                });
+
+                this.filteredData = { ...this.originalData };
+            }
+
+            parseCSVRow(row) {
+                const result = [];
+                let current = '';
+                let inQuotes = false;
                 
-                document.getElementById('searchInput').addEventListener('input', 
-                    debounce(e => renderData(filterData(e.target.value)))
-                );
+                for (let i = 0; i < row.length; i++) {
+                    const char = row[i];
+                    
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        result.push(current);
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                
+                result.push(current);
+                return result;
+            }
 
-                window.addEventListener('scroll', toggleBackToTop);
-                backToTopButton.addEventListener('click', scrollToTop);
-                toggleBackToTop();
+            setupEventListeners() {
+                // Search functionality
+                this.searchInput.addEventListener('input', this.debounce((e) => {
+                    this.filterData(e.target.value);
+                    this.render();
+                }, 300));
 
-            } catch(error) {
-                document.getElementById('resultsContainer').innerHTML = `
+                // Back to top
+                window.addEventListener('scroll', () => {
+                    const scrollThreshold = window.innerHeight;
+                    if (window.scrollY > scrollThreshold) {
+                        this.backToTopBtn.classList.add('visible');
+                    } else {
+                        this.backToTopBtn.classList.remove('visible');
+                    }
+                });
+
+                this.backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            filterData(searchTerm = '') {
+                const term = searchTerm.toLowerCase().trim();
+                
+                if (!term) {
+                    this.filteredData = { ...this.originalData };
+                    return;
+                }
+
+                this.filteredData = {};
+                
+                Object.entries(this.originalData).forEach(([area, offices]) => {
+                    const filteredOffices = offices.filter(office => 
+                        office.ufficio.toLowerCase().includes(term) ||
+                        office.codice.toLowerCase().includes(term) ||
+                        area.toLowerCase().includes(term)
+                    );
+                    
+                    if (filteredOffices.length > 0) {
+                        this.filteredData[area] = filteredOffices;
+                    }
+                });
+            }
+
+            render() {
+                if (Object.keys(this.filteredData).length === 0) {
+                    this.showNoResults();
+                    return;
+                }
+
+                let html = '';
+                
+                Object.entries(this.filteredData).forEach(([area, offices]) => {
+                    html += `
+                        <div class="area-group" data-area="${area}">
+                            <div class="area-header" onclick="this.parentElement.classList.toggle('collapsed')">
+                                <div>
+                                    <span class="area-title">${area}</span>
+                                    <span class="area-count">${offices.length} uffici</span>
+                                </div>
+                                <span class="area-toggle">▼</span>
+                            </div>
+                            <div class="office-list">
+                                ${offices.map(office => `
+                                    <div class="office-item">
+                                        <div class="office-name">${office.ufficio}</div>
+                                        <div class="office-code" onclick="app.copyCode('${office.codice}')" title="Clicca per copiare il codice">
+                                            ${office.codice}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                this.resultsContainer.innerHTML = html;
+                this.updateStats();
+            }
+
+            showNoResults() {
+                this.resultsContainer.innerHTML = `
                     <div class="no-results">
-                        <h3>Errore nel caricamento dei dati</h3>
-                        <p>Si prega di riprovare più tardi</p>
+                        <div class="no-results-icon">🔍</div>
+                        <h3>Nessun risultato trovato</h3>
+                        <p>Prova a modificare i termini di ricerca o verifica l'ortografia</p>
                     </div>
                 `;
-                console.error('Errore:', error);
+                this.updateStats();
             }
-        };
 
-        init();
+            showError(message) {
+                this.resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">⚠️</div>
+                        <h3>Errore</h3>
+                        <p>${message}</p>
+                    </div>
+                `;
+            }
+
+            updateStats() {
+                const areaCount = Object.keys(this.filteredData).length;
+                const officeCount = Object.values(this.filteredData).reduce((sum, offices) => sum + offices.length, 0);
+                
+                this.totalAreas.textContent = `${areaCount} aree`;
+                this.totalOffices.textContent = `${officeCount} uffici`;
+            }
+
+            copyCode(code) {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(code).then(() => {
+                        this.showCopyFeedback();
+                    }).catch(() => {
+                        this.fallbackCopy(code);
+                    });
+                } else {
+                    this.fallbackCopy(code);
+                }
+            }
+
+            fallbackCopy(text) {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                textArea.style.top = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                
+                try {
+                    document.execCommand('copy');
+                    this.showCopyFeedback();
+                } catch (err) {
+                    console.error('Errore nella copia:', err);
+                }
+                
+                document.body.removeChild(textArea);
+            }
+
+            showCopyFeedback() {
+                this.copyFeedback.classList.add('show');
+                setTimeout(() => {
+                    this.copyFeedback.classList.remove('show');
+                }, 2000);
+            }
+
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+        }
+
+        // Initialize app
+        const app = new CodiceMaiaApp();
     </script>
 </body>
 </html>
