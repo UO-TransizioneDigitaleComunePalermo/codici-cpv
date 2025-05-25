@@ -86,17 +86,6 @@
             z-index: 100;
         }
 
-        .search-controls {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-end;
-            margin-bottom: 1rem;
-        }
-
-        .search-field {
-            flex: 1;
-        }
-
         .search-label {
             display: block;
             font-weight: 600;
@@ -125,34 +114,6 @@
 
         .search-input::placeholder {
             color: var(--text-light);
-        }
-
-        /* Print Button */
-        .print-btn {
-            background: linear-gradient(135deg, var(--primary), #c41230);
-            color: white;
-            border: none;
-            padding: 1rem 1.5rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            white-space: nowrap;
-            box-shadow: var(--shadow);
-        }
-
-        .print-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-            background: linear-gradient(135deg, #c41230, var(--primary));
-        }
-
-        .print-btn:active {
-            transform: translateY(0);
         }
 
         /* Stats */
@@ -264,6 +225,7 @@
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 25px;
+          */  font-family: 'Courier New', monospace;*/
             font-weight: 700;
             font-size: 0.95rem;
             min-width: 80px;
@@ -352,160 +314,7 @@
 
         .back-to-top:hover {
             background: var(--secondary);
-        }
-
-        /* Copy feedback */
-        .copy-feedback {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--success);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            transform: translateX(300px);
-            transition: transform 0.3s ease;
-            z-index: 1001;
-        }
-
-        .copy-feedback.show {
-            transform: translateX(0);
-        }
-
-        /* Print Styles */
-        @media print {
-         @page {
-            @bottom-right {
-                content: "Pagina " counter(page) " di " counter(pages);
-                font-size: 0.8rem;
-                padding-right: 10px;
-            }
-        }
- 
-      body {
-                background: white !important;
-                font-size: 12px;
-            }
-
-            .search-section,
-            .back-to-top,
-            .copy-feedback {
-                display: none !important;
-            }
-
-            .header {
-                box-shadow: none;
-                margin-bottom: 1rem;
-                padding: 1rem 0;
-            }
-
-            .logo {
-                height: 60px;
-            }
-
-            .header h1 {
-                font-size: 1rem;
-                color: black !important;
-            }
-
-            .header-subtitle {
-                color: #666 !important;
-                font-size: 0.85rem;
-            }
-
-            .area-group {
-                box-shadow: none;
-                border: 1px solid #ddd;
-                margin-bottom: 1rem;
-                page-break-inside: avoid;
-            }
-
-            .area-header {
-                background: #f0f0f0 !important;
-                color: black !important;
-                padding: 0.65rem;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .area-title {
-                font-size: 1rem;
-            }
-
-            .area-toggle {
-                display: none;
-            }
-
-            .area-count {
-                background: #ddd !important;
-                color: black !important;
-				display: none;
-            }
-
-            .office-list {
-                max-height: none !important;
-                padding: 0 !important;
-				line-height: 1.2 !important;
-            }
-
-            .area-group.collapsed .office-list {
-                max-height: none !important;
-                padding: 0 !important;
-            }
-
-    .office-item {
-                display: flex !important;
-                align-items: left !important;
-                justify-content: space-between !important;
-                padding: 0.1rem 0.3rem !important;
-                border-bottom: 1px solid #ddd !important;
-                page-break-inside: avoid;
-                min-height: .8em !important;
-                height: auto !important;
-            }
-
-            .office-item:hover {
-                background: transparent !important;
-                padding-left: 0.5rem !important;
-            }
-
-            .office-item:last-child {
-                border-bottom: none !important;
-            }
-
-            .office-name {
-                flex: 1 !important;
-                font-size: .9rem !important;
-                margin-right: 0.2rem !important;
-                line-height: 1.1 !important;
-                display: flex !important;
-                align-items: left; !important;
-                font-weight: 500 !important;
-            }
-
-            .office-code {
-                background: #f8f9fa !important;
-                color: black !important;
-                border: 1px solid #ccc !important;
-                box-shadow: none !important;
-                padding: 0.15rem 0.3rem !important;
-                font-size: 0.75rem !important;
-                font-weight: bold !important;
-                min-width: 50px !important;
-                border-radius: 2px !important;
-                text-align: left !important;
-                display: flex !important;
-                align-items: left !important;
-                justify-content: left !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .container {
-                max-width: none;
-                padding: 0;
-            }
+           */ transform: translateY(-3px) scale(1.1);*/
         }
 
         /* Responsive Design */
@@ -520,16 +329,6 @@
 
             .header h1 {
                 font-size: 1.6rem;
-            }
-
-            .search-controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .print-btn {
-                width: 100%;
-                justify-content: center;
             }
 
             .office-item {
@@ -586,6 +385,25 @@
                 transition-duration: 0.01ms !important;
             }
         }
+
+        /* Copy feedback */
+        .copy-feedback {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transform: translateX(300px);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .copy-feedback.show {
+            transform: translateX(0);
+        }
     </style>
 </head>
 <body>
@@ -606,24 +424,17 @@
 
     <div class="container">
         <div class="search-section">
-            <div class="search-controls">
-                <div class="search-field">
-                    <label for="searchInput" class="search-label">
-                        🔍 Cerca un ufficio o codice
-                    </label>
-                    <input type="search" 
-                           id="searchInput" 
-                           class="search-input"
-                           placeholder="Scrivi qui il nome dell'ufficio o il codice..." 
-                           autofocus>
-                </div>
-				<button class="print-btn" id="printBtn" title="Stampa elenco in PDF">  🖨️ Stampa PDF  </button>
-            </div>
-
+            <label for="searchInput" class="search-label">
+                🔍 Cerca un ufficio o codice
+            </label>
+            <input type="search" 
+                   id="searchInput" 
+                   class="search-input"
+                   placeholder="Scrivi qui il nome dell'ufficio o il codice..." 
+                   autofocus>
             <div class="stats" id="statsContainer">
                 <div class="stat" id="totalAreas">Caricamento...</div>
                 <div class="stat" id="totalOffices">Caricamento...</div>
-
             </div>
         </div>
 
@@ -655,7 +466,6 @@
                 this.copyFeedback = document.getElementById('copyFeedback');
                 this.totalAreas = document.getElementById('totalAreas');
                 this.totalOffices = document.getElementById('totalOffices');
-                this.printBtn = document.getElementById('printBtn');
                 
                 this.init();
             }
@@ -728,11 +538,6 @@
                     this.render();
                 }, 300));
 
-                // Print functionality
-                this.printBtn.addEventListener('click', () => {
-                    this.preparePrintView();
-                });
-
                 // Back to top
                 window.addEventListener('scroll', () => {
                     const scrollThreshold = window.innerHeight;
@@ -749,31 +554,6 @@
                         behavior: 'smooth'
                     });
                 });
-            }
-
-            preparePrintView() {
-                // Espande tutte le aree collassate per la stampa
-                const collapsedAreas = document.querySelectorAll('.area-group.collapsed');
-                const wasCollapsed = [];
-                
-                collapsedAreas.forEach((area, index) => {
-                    wasCollapsed[index] = area;
-                    area.classList.remove('collapsed');
-                });
-
-                // Breve delay per permettere alle animazioni di completarsi
-                setTimeout(() => {
-                    window.print();
-                    
-                    // Ripristina lo stato originale dopo la stampa
-                    setTimeout(() => {
-                        wasCollapsed.forEach(area => {
-                            if (area) {
-                                area.classList.add('collapsed');
-                            }
-                        });
-                    }, 1000);
-                }, 300);
             }
 
             filterData(searchTerm = '') {
