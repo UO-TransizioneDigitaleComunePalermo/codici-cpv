@@ -502,6 +502,9 @@
                 print-color-adjust: exact;
             }
 
+.footer { display:none; }
+
+
             .container {
                 max-width: none;
                 padding: 0;
@@ -587,22 +590,22 @@
             }
         }
 		 /* Ribbon Demo */
-        .demo-ribbon {
-            position: fixed;
-            top: 5px;
-            right: -45px;
-            background: #ff9900;
-            color: white;
-            padding: 8px 50px;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            transform: rotate(45deg);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            z-index: 10001;
-            pointer-events: none;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
+    .demo-ribbon {
+        position: fixed;
+        top: 5px;
+        right: -45px;
+        background: #ff9900;
+        color: white;
+        padding: 8px 50px;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        transform: rotate(45deg);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        z-index: 10001;
+        pointer-events: none;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
 
         @media (max-width: 768px) {
             .demo-ribbon {
@@ -612,10 +615,30 @@
                 padding: 6px 50px;
             }
         }
+		 /* Footer */
+    .footer {
+        background: white;
+        padding: 2rem 1rem;
+        text-align: center;
+        border-top: 2px solid var(--border);
+        margin-top: 2rem;
+        color: var(--text-light);
+        font-size: 0.9rem;
+    }
+
+    .footer a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
     </style>
 </head>
 <body>
- <div class="demo-ribbon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unofficial!</div>
+ <!-- <div class="demo-ribbon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unofficial!</div> -->
     <div class="header">
         <div class="container">
             <a href="https://www.comune.palermo.it/" title="Comune di Palermo" target="_blank">
@@ -945,5 +968,12 @@
         // Initialize app
         const app = new CodiceMaiaApp();
     </script>
+	
+<footer class="footer">
+    <div class="container">
+        Web application developed by <a href="https://x.com/gbvitrano" target="_blank" rel="noopener">@gbvitrano</a> powered by Deepseek's and Claude AI assistance.
+        - Licenza <a href="https://creativecommons.org/licenses/by/4.0/deed.it" target="_blank" rel="noopener">CC BY 4.0</a>
+    </div>
+</footer>	
 </body>
 </html>
