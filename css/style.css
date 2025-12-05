@@ -65,3 +65,8 @@ a {
     visibility: hidden !important;
 }
 /* rimosso momentaneamente export tool */
+
+mark.exhibit-highlight {
+  background: #ffeb7a;
+  padding: 0 2px;
+}
