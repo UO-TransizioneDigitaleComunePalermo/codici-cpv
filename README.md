@@ -1,5 +1,5 @@
-# `Catalogo` dei codici degli uffici comunali per il protocollo MAIA
-Catalogo al link [https://uo-transizionedigitalecomunepalermo.github.io/codici-protocollo-maia/](https://uo-transizionedigitalecomunepalermo.github.io/codici-protocollo-maia)
+# `Catalogo` dei codici del piano dei conti
+Catalogo al link [https://uo-transizionedigitalecomunepalermo.github.io/piano-dei-conti/](https://uo-transizionedigitalecomunepalermo.github.io/piano-dei-conti)
 
 ### Strumenti principali usati per realizzare la visualizzazione del `catalogo`:
 - [Simile Exhibit](http://www.simile-widgets.org/exhibit3/), per realizzare l'interfaccia di navigazione del catalogo;
