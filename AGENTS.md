@@ -1,7 +1,7 @@
 # Repository Guidelines
 
 ## Project Structure & Assets
-- `index.html` is the public landing page rendering the SIOPE catalog with Simile Exhibit; `info.html` holds the background/usage notes.  
+- `index.html` is the public landing page rendering the catalog with Simile Exhibit; a further `info.html` page holds the background/usage notes.  
 - `css/` contains shipped Bootstrap builds and the custom overrides in `css/style.css` (edit here first).  
 - `less/` stores the upstream Bootstrap sources for reference; they are not auto-compiled.  
 - `js/` bundles vendor scripts (`jquery.min.js`, `bootstrap.min.js`, `js/dist/exhibit-api.js`) plus an empty `scripts.js` placeholder for future tweaks.  
