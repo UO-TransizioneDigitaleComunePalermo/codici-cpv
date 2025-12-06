@@ -2,9 +2,9 @@
 <html lang="it">
 <head>
 	<meta charset="utf-8">
-	<title>piano dei conti</title>
+	<title>Codici CPV</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="piano dei conti">
+	<meta name="description" content="Codici CPV">
 	<meta name="author" content="uo transizione digitale comune palermo">
 
 	
@@ -32,7 +32,7 @@
     <link rel="exhibit/data" 
     ex:valueSeparator=";"   
     type="text/csv"
-    href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRY6OmlALV5RFSoFo0HvKiY57V1BAk-NXT4rLUQ6lyIcOoIQlBkIJKIq2QFMstfhKL5mVlQS928nnUS/pub?gid=153895922&single=true&output=csv" />
+    href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4ZQZ2BRYixroKZSuLf7CmOJn-PCNLNjb4tyHdc7ZUygwZDwLgprhE9fniDy846sxykBJn7IJWIzEO/pub?gid=594972554&single=true&output=csv" />
 	
 
 	
@@ -46,7 +46,7 @@
 
   
 	
-    <link href="https://zapier.com/engine/rss/43663/p2" rel="alternate" type="application/rss+xml" title="Codici protocollo MAIA " />
+    <link href="https://zapier.com/engine/rss/43663/p2" rel="alternate" type="application/rss+xml" title="Codici CPV " />
 
 	
 </head>
@@ -68,10 +68,10 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 							<li>    <li class="active">     
-								<a href="./index.html"><b>Piano dei Conti</b></a>
+								<a href="./index.html"><b>Codici CPV</b></a>
 							</li>
 							<li>
-								<a href="https://docs.google.com/spreadsheets/d/1uHirsKMPegjKM-cIVNP-1xNB2NCz3Xi-sW1cdG6Sw4g/edit?gid=153895922#gid=153895922" target="_blank">Database fonte</a>
+								<a href="https://docs.google.com/spreadsheets/d/10U2j0cAvVX_Jsf6VxS9MuJFeUsFbd7YFGLKKR_3AfcY" target="_blank">Database fonte</a>
 							</li>  						
 
 							<!--
@@ -100,10 +100,8 @@
 
 					
 			<div class="col-md-12 column">
-			<h4>Catalogo dei codici del Piano dei Conti (SIOPE)</h4></p>
-				Elenco tratto dal sito web della <b>Ragioneria generale dello Stato</b>. Al fine di garantire una corretta applicazione della codifica gestionale, 
-				i decreti del Ministro dell'economia e delle finanze di attuazione del SIOPE hanno previsto la definizione, per ciascun comparto, di un "Glossario dei codici gestionali", 
-				alle cui istruzioni gli enti devono uniformarsi nell'attività di codifica dei titoli di entrata e di spesa. <b>I codici di seguito riprtati sono fino al V° livello</b>.
+			<h4>Catalogo dei codici CPV</h4></p>
+				Elenco tratto dal sito web <b>acquistinretepa.it</b> a dicembre 2025. 
 			 
 			</p>
 			
@@ -115,7 +113,7 @@
 		
 			<div class="col-md-9 column">
 				<img style="float: left;" src="https://raw.githubusercontent.com/UO-TransizioneDigitaleComunePalermo/documentazione-rup/refs/heads/gh-pages/img/zoom_magnifying_glass_search_icon.png" alt="replace text" width="31" />   <!--  inclusa immagine lente ingrandimento -->
-				<span style="background-color: #4485b8; color: #fff; display: inline-block; padding: 3px 7px; font-weight: bold; border-radius: 8px;">Cerca l'argomento e ottieni di seguito il codice del Piano dei conti</span> 
+				<span style="background-color: #4485b8; color: #fff; display: inline-block; padding: 3px 7px; font-weight: bold; border-radius: 8px;">Cerca l'argomento e ottieni di seguito il codice CPV</span> 
 				<!--  <button type="button" class="btn btn-primary btn-sm border-radius: 8px;"><b>Cerca informazioni o parole chiave</b></button>   -->
 				
 			<div ex:role="facet" ex:facetClass="TextSearch"></div>
@@ -206,9 +204,9 @@
 					<div ex:role="exhibit-view" 
 					ex:viewClass="Exhibit.TabularView"  
 					ex:label="Table"  
-					ex:columns=".Codice_completo_PDC,.Codice_Gestionale_Siope,.Descrizione,.Glossario"  
-					ex:columnLabels="Codice completo PDC, Codice Gestionale SIOPE, Descrizione, Glossario" 
-					ex:columnFormats="list,list,list,list"
+					ex:columns=".bando,.capitolato_tecnico,.settore_merceologico,.categoria,.codice_CPV,.descrizione_CPV"  
+					ex:columnLabels="Bando, Capitolato tecnico, Settore merceologico, Categoria, Codice CPV, Descrizione CPV" 
+					ex:columnFormats="list,list,list,list,list,list"
 					ex:paginate="true"
 					ex:pageSize="100"
 					ex:tableStyler="tableStyler"> 
@@ -216,10 +214,12 @@
 						<div class="table-responsive">
 							<table class="table">
 								<tr>
-									<td><a ex:href-content=".link" ex:onclick-subcontent="trackOutboundLink('.link'); return false;" target="_blank"><strong><span ex:content=".Codice_completo_PDC" class="accussì"></strong></span></a></td> 
-									<td><span ex:content=".Codice_Gestionale_Siope"></td>
-									<td><span ex:content=".Descrizione"></td>
-									<td><span ex:content=".Glossario"></span></td>             
+									<td><a ex:href-content=".link" ex:onclick-subcontent="trackOutboundLink('.link'); return false;" target="_blank"><strong><span ex:content=".descrizione_CPV" class="accussì"></strong></span></a></td> 
+									<td><span ex:content=".codice_CPV"></td>
+									<td><span ex:content=".settore_merceologico"></td>
+									<td><span ex:content=".categoria"></td>
+									<td><span ex:content=".capitolato_tecnico"></td>
+									<td><span ex:content=".bando"></span></td>             
 								</tr>
 							</table>
 						</div>
@@ -263,10 +263,10 @@
   			<li><a href="http://getbootstrap.com" target="_blank">Bootstrap</a>, per dare un po' di stile alle pagine pubblicate;</li>
    			<li><a href="https://www.google.com/sheets/about/" target="_blank">GDrive Sheet</a>, per raccogliere e distribuire i dati che fanno da sorgente;</li>
    			<li><a href="https://pages.github.com" target="_blank">GitHub Pages</a>, per l'hosting dei file che costituiscono questa visualizzazione. <span style="font-size: 0.7em; color: #999999;"> 
-			    <a style="color: #999999; background-color: #ffffff;" href="https://github.com/UO-TransizioneDigitaleComunePalermo/piano-dei-conti" target="_blank" rel="noopener">Repository</a></span></li>
+			    <a style="color: #999999; background-color: #ffffff;" href="https://github.com/UO-TransizioneDigitaleComunePalermo/codici-cpv" target="_blank" rel="noopener">Repository</a></span></li>
 			</ul>
 			<p><a href="https://www.flaticon.com/free-icon/soft-skills_8915929?term=interoperability&page=1&position=26&origin=search&related_id=8915929" target="_blank"> L'icona <img style="max-width:20px; margin-top: 3px;" src="./img/logo-soft-skills.png"> è di Flaticon (CC BY)</a></p>
-			<p><img alt="GitHub branch check runs" src="https://img.shields.io/github/check-runs/UO-TransizioneDigitaleComunePalermo/piano-dei-conti/gh-pages"> </p>
+			<p><img alt="GitHub branch check runs" src="https://img.shields.io/github/check-runs/UO-TransizioneDigitaleComunePalermo/codici-cpv/gh-pages"> </p>
 			
 		</footer>
 		
