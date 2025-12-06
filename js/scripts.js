@@ -1,3 +1,33 @@
+// Force Exhibit CSV importer to set a label using 'descrizione_CPV' when missing,
+// otherwise the dataset is rejected for lacking a label.
+(function ensureExhibitLabels() {
+  const install = () => {
+    if (!window.Exhibit || !Exhibit.Importer || !Exhibit.Importer.Csv) return false;
+    const orig = Exhibit.Importer.Csv.parse;
+    Exhibit.Importer.Csv.parse = function (url, content, callback, link) {
+      orig(url, content, function (data) {
+        if (data && Array.isArray(data.items)) {
+          data.items.forEach((item) => {
+            if (!item.label && item.descrizione_CPV) {
+              item.label = item.descrizione_CPV;
+            }
+          });
+        }
+        callback(data);
+      }, link);
+    };
+    return true;
+  };
+
+  const waitAndInstall = () => {
+    if (!install()) {
+      setTimeout(waitAndInstall, 100);
+    }
+  };
+
+  waitAndInstall();
+})();
+
 // Highlight search term matches inside Exhibit table results
 document.addEventListener("DOMContentLoaded", () => {
   const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
