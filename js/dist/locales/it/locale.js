@@ -66,8 +66,8 @@ Exhibit.Localization.importLocale("it", {
     "%import.failedAccessHttpStatus": " (HTTP %1$d)",
     "%import.missingFragment": "Failed to locate fragment in %1$s",
 
-    "%database.itemType.label": "codice PDC",
-    "%database.itemType.pluralLabel": "codici PDC",
+    "%database.itemType.label": "codice",
+    "%database.itemType.pluralLabel": "codici",
     "%database.labelProperty.label": "label",
     "%database.labelProperty.pluralLabel": "labels",
     "%database.labelProperty.reverseLabel": "label of",
